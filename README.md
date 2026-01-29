@@ -1,4 +1,4 @@
-# VirtualCam
+# FakeFaceCam
 
 Приложение виртуальной камеры на Python, которое применяет к видеопотоку с веб-камеры эффекты в реальном времени и выводит его как виртуальное устройство камеры. Идеально подходит для стриминга, видеоконференций или творческих видеопроектов.
 
@@ -59,7 +59,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 1. Склонируйте репозиторий:
 ```bash
 git clone <repository-url>
-cd virtualcam
+cd fake_face_cam
 ```
 
 2. Установите зависимости с помощью uv:
@@ -98,7 +98,7 @@ uv run python run.py --mode faceswap  # Замена лица
 ## Структура проекта
 
 ```
-virtualcam/
+fake_face_cam/
 ├── modes/
 │   ├── matrix_mode.py       # ASCII-эффект Матрицы
 │   ├── face_mode.py         # Режим обнаружения лиц
@@ -109,7 +109,6 @@ virtualcam/
 ├── utils/
 │   ├── face_analyzer.py     # Анализатор лиц на базе InsightFace
 │   └── effects.py           # Визуальные эффекты
-├── pyvirtualcam/            # Библиотека виртуальной камеры (подмодуль)
 ├── resources/
 │   ├── models/              # Модели InsightFace (автозагрузка)
 │   └── *.png                # Исходные лица для замены
@@ -177,6 +176,9 @@ uv run python run.py --mode faceswap
 - `s` — показать/скрыть оверлей с выбранным лицом
 - `q` — выход из режима
 
+![Face Swap Example](docs/SCR-20260129-lkit.png)
+![Face Swap Effects](docs/SCR-20260129-lkne.jpeg)
+
 ### Оптимизация производительности
 
 Face Swap Mode использует следующие оптимизации для работы на CPU:
@@ -192,7 +194,7 @@ Face Swap Mode использует следующие оптимизации д
 
 ## Лицензия
 
-Этот проект использует библиотеку pyvirtualcam. Подробности о реализации виртуальной камеры см. в [лицензии pyvirtualcam](pyvirtualcam/LICENSE).
+Этот проект использует библиотеку pyvirtualcam. Подробности о реализации виртуальной камеры см. в [лицензии pyvirtualcam](https://github.com/letmaik/pyvirtualcam).
 
 ## Участие в разработке
 
