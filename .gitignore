@@ -10,3 +10,11 @@ wheels/
 .venv
 .DS_Store
 .vscode/*
+
+# AI models
+resources/models/
+*.onnx
+
+# Other
+PLAN.md
+resources/*_personal_*.png

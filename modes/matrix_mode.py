@@ -21,10 +21,7 @@ def matrix(cap, cam):
     new_dimension = (new_width, new_height)
 
     char_offset = new_height - 1
-    d_chars = [
-        ''.join(random.sample(chars, len(chars)))
-        for _ in range(new_height)
-    ]
+    d_chars = [''.join(random.sample(chars, len(chars))) for _ in range(new_height)]
 
     while True:
         matrix_window = np.zeros((height, width, 3), dtype=np.uint8)
@@ -70,12 +67,12 @@ def matrix(cap, cam):
                     thickness=1,
                 )
 
-        cv.imshow("Matrix", result_image)
+        cv.imshow('Matrix', result_image)
 
         key = cv.waitKey(1) & 0xFF
         if key == ord('m'):
             matrix_mode = (matrix_mode + 1) % 5
-            print(f"Matrix mode -> {matrix_mode}")
+            print(f'Matrix mode -> {matrix_mode}')
         elif key == ord('q'):
             break
 

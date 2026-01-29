@@ -19,13 +19,14 @@ def timeshift(cap, cam):
             print("Can't receive frame (stream end?). Exiting ...")
             break
 
-
         gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
         # gray to 3 demension array
         gray = np.repeat(gray[:, :, np.newaxis], 3, axis=2)
 
         sx = (sx + COLUMN_SPEED) % width
-        blank_frame[0:height, sx: COLUMN_WIDTH + sx]= gray[0:height, sx: COLUMN_WIDTH + sx]
+        blank_frame[0:height, sx : COLUMN_WIDTH + sx] = gray[
+            0:height, sx : COLUMN_WIDTH + sx
+        ]
 
         # Display the resulting frame
         cv.imshow('copy', blank_frame)

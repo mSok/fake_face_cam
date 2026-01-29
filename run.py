@@ -7,15 +7,16 @@ from modes.matrix_mode import matrix
 from modes.face_mode import face_marker
 from modes.raw_mode import raw_camera
 from modes.timeshit_mode import timeshift
+from modes.face_swap_mode import face_swapper
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--mode",
-        choices=["matrix", "face", "raw", "timeshift"],
-        default="matrix",
-        help="Video mode"
+        '--mode',
+        choices=['matrix', 'face', 'raw', 'timeshift', 'faceswap'],
+        default='matrix',
+        help='Video mode',
     )
     args = parser.parse_args()
 
@@ -23,36 +24,34 @@ def main():
     time.sleep(1)
 
     if not cap.isOpened():
-        raise RuntimeError("Cannot open camera")
+        raise RuntimeError('Cannot open camera')
 
     width = int(cap.get(cv.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv.CAP_PROP_FRAME_HEIGHT))
     fps = 20
 
-    print(f"Camera: {width}x{height} @ {fps}fps")
+    print(f'Camera: {width}x{height} @ {fps}fps')
 
     with pyvirtualcam.Camera(
-        width=width,
-        height=height,
-        fps=fps,
-        print_fps=True
+        width=width, height=height, fps=fps, print_fps=True
     ) as cam:
-
-        print(f"VirtualCam: {cam.device}")
+        print(f'VirtualCam: {cam.device}')
 
         match args.mode:
-            case "matrix":
+            case 'matrix':
                 matrix(cap, cam)
-            case "face":
+            case 'face':
                 face_marker(cap, cam)
-            case "raw":
+            case 'raw':
                 raw_camera(cap, cam)
-            case "timeshift":
+            case 'timeshift':
                 timeshift(cap, cam)
+            case 'faceswap':
+                face_swapper(cap, cam)
 
     cap.release()
     cv.destroyAllWindows()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

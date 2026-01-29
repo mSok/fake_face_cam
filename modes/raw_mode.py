@@ -7,7 +7,7 @@ def raw_camera(cap, cam):
         if not ret:
             break
 
-        cv.imshow("Raw camera", frame)
+        cv.imshow('Raw camera', frame)
 
         key = cv.waitKey(1) & 0xFF
         if key == ord('q'):
